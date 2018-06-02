@@ -31,41 +31,47 @@ app.get('/', function (req, res) {
 */
 
 app.get('/', function (req, res) {
-    res.render('index', {
-        titulo: 'Pagina de Inicio',
-        subtitulo: 'Seja bem vindo',
-        servicos: [{
-            nome: 'Facebook',
-            icon: 'fa fa-facebook',
-            estado: true
-        },
-        {
-            nome: 'Whatsapp',
-            icon: 'fa fa-whatsapp',
-            estado: true
-        },
-        {
-            nome: 'Twitter',
-            icon: 'fa fa-twitter',
-            estado: true
-        },
-        {
-            nome: 'LinkedIn',
-            icon: 'fa fa-linkedin',
-            estado: true
-        },
-        {
-            nome: 'Telegram',
-            icon: 'fa fa-telegram',
-            estado: true
-        },
-        {
-            nome: 'Skype',
-            icon: 'fa fa-skype',
-            Estado: false
-        },
-        ]
-    });
+
+    try {
+        res.render('index', {
+            titulo: 'Pagina de Inicio',
+            subtitulo: 'Seja bem vindo',
+            servicos: [{
+                nome: 'Facebook',
+                icon: 'fa fa-facebook',
+                estado: true
+            },
+            {
+                nome: 'Whatsapp',
+                icon: 'fa fa-whatsapp',
+                estado: true
+            },
+            {
+                nome: 'Twitter',
+                icon: 'fa fa-twitter',
+                estado: true
+            },
+            {
+                nome: 'LinkedIn',
+                icon: 'fa fa-linkedin',
+                estado: true
+            },
+            {
+                nome: 'Telegram',
+                icon: 'fa fa-telegram',
+                estado: true
+            },
+            {
+                nome: 'Skype',
+                icon: 'fa fa-skype',
+                Estado: false
+            },
+            ]
+        });
+    } catch (error) {
+        res.send(error);
+    }
+    
 });
 
 server.listen(port, () => {

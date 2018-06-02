@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 8000;
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -30,8 +30,8 @@ app.get('/', function (req, res) {
 });
 */
 
-app.get('/', function (req, res) {
 
+app.get('/', function (req, res) {
     try {
         res.render('index', {
             titulo: 'Pagina de Inicio',
@@ -71,7 +71,6 @@ app.get('/', function (req, res) {
     } catch (error) {
         res.send(error);
     }
-    
 });
 
 server.listen(port, () => {

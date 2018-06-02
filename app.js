@@ -24,10 +24,48 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
     res.status(200).send({ Fichero: 'Recibido' });
 });
-*/
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/pages/login.html'));
+});
+*/
+
+app.get('/', function (req, res) {
+    res.render('index', {
+        titulo: 'Pagina de Inicio',
+        subtitulo: 'Seja bem vindo',
+        servicos: [{
+            nome: 'Facebook',
+            icon: 'fa fa-facebook',
+            estado: true
+        },
+        {
+            nome: 'Whatsapp',
+            icon: 'fa fa-whatsapp',
+            estado: true
+        },
+        {
+            nome: 'Twitter',
+            icon: 'fa fa-twitter',
+            estado: true
+        },
+        {
+            nome: 'LinkedIn',
+            icon: 'fa fa-linkedin',
+            estado: true
+        },
+        {
+            nome: 'Telegram',
+            icon: 'fa fa-telegram',
+            estado: true
+        },
+        {
+            nome: 'Skype',
+            icon: 'fa fa-skype',
+            Estado: false
+        },
+        ]
+    });
 });
 
 server.listen(port, () => {

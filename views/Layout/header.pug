@@ -1,0 +1,86 @@
+#header
+  header.clearfix
+    // Branding
+    .branding
+      a.brand(href='index.html')
+        span Latitude
+      a.offcanvas-toggle.visible-xs-inline(role='button' tabindex='0')
+        i.fa.fa-bars
+    // Branding end
+    // Left-side navigation
+    ul.nav-left.pull-left.list-unstyled.list-inline
+      li.leftmenu-collapse
+        a.collapse-leftmenu(role='button' tabindex='0')
+          i.fa.fa-outdent
+      li.dropdown.leftmenu-collapse
+        a.dropdown-toggle(href='javascript:void(0);' data-toggle='dropdown')
+          i.fa.fa-language
+        .dropdown-menu.pull-left.panel-default.pt-0.pb-0(role='menu')
+          ul.list-group.mb-0
+            li.list-group-item
+              a.p-0.m-0(href='javascript:void(0);') English
+            li.list-group-item
+              a.p-0.m-0(href='javascript:void(0);') Spanish
+            li.list-group-item
+              a.p-0.m-0(href='javascript:void(0);') Chinese
+            li.list-group-item
+              a.p-0.m-0(href='javascript:void(0);') Arabic
+      li.dropdown.leftmenu-collapse
+        a.dropdown-toggle(href='javascript:void(0);' data-toggle='dropdown')
+          i.fa.fa-plus.mr-5
+          | New
+        .dropdown-menu.pull-left.panel.panel-default(role='menu')
+          ul.list-group
+            li.list-group-item
+              a.media(role='button')
+                span.pull-left.media-object
+                  i.fa.fa-briefcase
+                .media-body
+                  span.block New Campaign
+            li.list-group-item
+              a.media(role='button')
+                span.pull-left.media-object
+                  i.fa.fa-area-chart
+                .media-body
+                  span.block Generate Report
+            li.list-group-item
+              a.media(role='button')
+                span.pull-left.media-object
+                  i.fa.fa-user
+                .media-body
+                  span.block Add New User
+            li.list-group-item
+              a.media(role='button')
+                span.pull-left.media-object
+                  i.fa.fa-file-text
+                .media-body
+                  span.block Create Page
+    ul.nav-right.pull-right.list-inline
+      li.dropdown.nav-profile
+        a.dropdown-toggle(href='javascript:void(0);' data-toggle='dropdown')
+          span Erikson Melgarejo
+          img(src='assets/images/profile-photo.jpg' alt='' class="0 size-30x30")
+        ul.dropdown-menu.pull-right(role='menu')
+          li
+            .user-info
+              .user-name Alexander
+              .user-position.online Available
+          li
+            a(href='profile.html' role='button' tabindex='0')
+              span.label.label-success.pull-right 80%
+              i.fa.fa-user
+              | Profile
+          li
+            a(role='button' tabindex='0')
+              span.label.label-info.pull-right new
+              i.fa.fa-check
+              | Tasks
+          li.divider
+          li
+            a(href='locked.html' role='button' tabindex='0')
+              i.fa.fa-lock
+              | Lock
+          li
+            a(href='login.html' role='button' tabindex='0')
+              i.fa.fa-sign-out
+              | Logout

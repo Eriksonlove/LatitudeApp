@@ -1,0 +1,31 @@
+ul.nav-right.pull-right.list-inline
+  li.dropdown.nav-profile
+    a.dropdown-toggle(href='javascript:void(0);' data-toggle='dropdown')
+      img.0.size-30x30(src='assets/images/profile-photo.jpg' alt='')
+    ul.dropdown-menu.pull-right(role='menu')
+      li
+        .user-info
+          .user-name Alexander
+          .user-position.online Available
+      li
+        a(href='profile.html' role='button' tabindex='0')
+          span.label.label-success.pull-right 80%
+          i.fa.fa-user
+          | Profile
+      li
+        a(role='button' tabindex='0')
+          span.label.label-info.pull-right new
+          i.fa.fa-check
+          | Tasks
+      li.divider
+      li
+        a(href='locked.html' role='button' tabindex='0')
+          i.fa.fa-lock
+          | Lock
+      li
+        a(href='login.html' role='button' tabindex='0')
+          i.fa.fa-sign-out
+          | Logout
+  li.toggle-right-leftmenu
+    a(role='button' tabindex='0')
+      i.fa.fa-align-left

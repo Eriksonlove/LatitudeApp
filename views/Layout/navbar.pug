@@ -1,0 +1,142 @@
+#controls
+  // SIDEBAR Content
+  aside#leftmenu
+    #leftmenu-wrap
+      .panel-group.slim-scroll(role='tablist')
+        .panel.panel-default
+          #leftmenuNav.panel-collapse.collapse.in(role='tabpanel')
+            .panel-body
+              // NAVIGATION Content
+              ul#navigation
+                li
+                  a(href='index.html')
+                    i.fa.fa-dashboard
+                    span Inicio
+                li
+                  a(role='button' tabindex='0')
+                    i.fa.fa-envelope
+                    span Mail Box
+                  ul
+                    li
+                      a(href='mail-inbox.html')
+                        i.fa.fa-angle-right
+                        |  Inbox
+                        span.label.label-success new
+                    li
+                      a(href='mail-compose.html')
+                        i.fa.fa-angle-right
+                        |  Compose Mail
+                    li
+                      a(href='mail-single.html')
+                        i.fa.fa-angle-right
+                        |  Single Mail
+                li
+                  a(href='material.html')
+                    i.fa.fa-arrow-right
+                    span Material UI
+                li.active.open
+                  a(role='button' tabindex='0')
+                    i.fa.fa-leaf
+                    span Falcon UI
+                  ul
+                    li
+                      a(href='ui-general.html')
+                        i.fa.fa-angle-right
+                        | General Elements
+                    li
+                      a(href='ui-navigation.html')
+                        i.fa.fa-angle-right
+                        | Nav &amp; Accordions
+                    li.active
+                      a(href='ui-boxss.html')
+                        i.fa.fa-angle-right
+                        | boxss
+                    li
+                      a(href='ui-portlets.html')
+                        i.fa.fa-angle-right
+                        | Portlets                
+              // / NAVIGATION Content
+        .panel.settings.panel-default
+          .panel-heading(role='tab')
+            h4.panel-title
+              a(data-toggle='collapse' href='#leftmenuControls')
+                | Serviços Disponiveis
+                i.fa.fa-angle-up
+          #leftmenuControls.panel-collapse.collapse.in(role='tabpanel')
+            .panel-body
+              each s in servicos
+                .form-group
+                  .row
+                    label.col-xs-8
+                      i(class=`${s.icon}`)
+                      | &nbsp;#{s.nome}
+                    .col-xs-4.control-label
+                      .togglebutton
+                        label
+                          input(type='checkbox' checked=s.estado ? true : false)
+              //.form-group
+                .row
+                  label.col-xs-8
+                    i.fa.fa-whatsapp
+                    | &nbsp;WhatsApp
+                  .col-xs-4.control-label
+                    .togglebutton
+                      label
+                        input(type='checkbox' checked='')
+              //.form-group
+                .row
+                  label.col-xs-8
+                    i.fa.fa-facebook
+                    | &nbsp;Facebook
+                  .col-xs-4.control-label
+                    .togglebutton
+                      label
+                        input(type='checkbox' checked='')          
+              //.form-group
+                .row
+                  label.col-xs-8
+                    i.fa.fa-twitter
+                    | &nbsp;Twitter
+                  .col-xs-4.control-label
+                    .togglebutton
+                      label
+                        input(type='checkbox')
+              //.form-group
+                .row
+                  label.col-xs-8
+                    i.fa.fa-telegram
+                    | &nbsp;Telegram
+                  .col-xs-4.control-label
+                    .togglebutton
+                      label
+                        input(type='checkbox' checked='')
+              //.form-group
+                .row
+                  label.col-xs-8
+                    i.fa.fa-envelope
+                    | &nbsp;Emails
+                  .col-xs-4.control-label
+                    .togglebutton
+                      label
+                        input(type='checkbox' checked='')          
+              //.form-group
+                .row
+                  label.col-xs-8
+                    i.fa.fa-skype
+                    | &nbsp;Skype
+                  .col-xs-4.control-label
+                    .togglebutton
+                      label
+                        input(type='checkbox')
+
+          .milestone-sidbar
+            .text-center-folded
+              span.pull-right.pull-none-folded 60%
+              span.hidden-folded Milestone
+            .progress.progress-xxs.m-t-sm.dk
+              .progress-bar.progress-bar-info(style='width: 60%;')  
+            .text-center-folded
+              span.pull-right.pull-none-folded 35%
+              span.hidden-folded Release
+            .progress.progress-xxs.m-t-sm.dk
+              .progress-bar.progress-bar-primary(style='width: 35%;')

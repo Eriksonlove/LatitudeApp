@@ -40,14 +40,15 @@ app.post('/webHooks/whatsapp', function (req, res) {
     console.log(req.headers);
     console.log(req.body);
 
+    let agora = moment().format('HH:mm:ss DD/MM/YYYY');
     io.emit('mensagem', {
-        dataChegada: moment().format('HH:mm:ss DD/MM/YYYY'),
+        dataChegada: agora,
         origem: req.body.from,
         texto: req.body.text,
         inbound: true
     });
 
-    res.status(200).send();
+    res.status(200).send(`${agora} - ${req.body.from} - ${req.body.text}`);
 });
 
 io.on('connection', (socket) => {

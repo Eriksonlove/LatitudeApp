@@ -195,7 +195,7 @@
                                             <div class="media">
                                                 <div class="thumb thumb-sm" v-bind:class="m.inbound ? 'pull-left' : 'pull-right'">
                                                     <img class="media-object br-50" src="assets/images/random-avatar1.jpg" alt=""> </div>
-                                                    <!--<i class="fa fa-user-circle"></i>-->
+                                                <!--<i class="fa fa-user-circle"></i>-->
                                                 <div class="media-body">
                                                     <p class="media-heading">
                                                         <span class="datetime">{{m.dataChegada}}</span>
@@ -240,9 +240,9 @@
             var app = new Vue({
                 el: '#wrap',
                 data: {
-                    interacao : {
-                        contact : '244929164344',
-                        name : 'Erikson Melgarejo'
+                    interacao: {
+                        contact: '244929164344',
+                        name: 'Erikson Melgarejo'
                     },
                     mensagens: [],
                     textoMsg: ''
@@ -257,7 +257,7 @@
                         var self = this;
 
                         socket.emit('enviarMsg', {
-                            contact : self.interacao.contact,
+                            contact: self.interacao.contact,
                             texto: self.textoMsg
                         });
 
@@ -272,7 +272,7 @@
             })
         </script>
         <script>
-                (function () { socket.on('post', (data) => { app.cargar(data); }) }());
+            (function () { socket.on('post', (data) => { app.cargar(data); }) }());
 
             (function () {
                 socket.on('mensagem', (data) => {

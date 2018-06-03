@@ -48,7 +48,7 @@ app.post('/webHooks/whatsapp', function (req, res) {
         inbound: true
     });
 
-    res.status(200).send(`${agora} - ${req.body.from} - ${req.body.text}`);
+    res.send(`${agora} - ${req.body.from} - ${req.body.text}`);
 });
 
 io.on('connection', (socket) => {

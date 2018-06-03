@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js " lang="pt">
+
 <head>
     <% include ../views/layout/head %>
 </head>
@@ -19,18 +20,18 @@
                                         <!--  NAVIGATION Content -->
                                         <ul id="navigation">
                                             <li>
-                                                <a href="index.html">
+                                                <a href="">
                                                     <i class="fa fa-dashboard"></i>
-                                                    <span>Dashboard</span>
+                                                    <span>Inicio</span>
                                                 </a>
-                                            </li>                                            
-                                            <li>
+                                            </li>
+                                            <li class="active">
                                                 <a href="material.html">
                                                     <i class="fa fa-arrow-right"></i>
                                                     <span>Material UI</span>
                                                 </a>
                                             </li>
-                                            <li class="active open">
+                                            <li >
                                                 <a role="button" tabindex="0">
                                                     <i class="fa fa-leaf"></i>
                                                     <span>Falcon UI</span>
@@ -48,7 +49,7 @@
                                                         <a href="ui-widgets.html">
                                                             <i class="fa fa-angle-right"></i>Widgets</a>
                                                     </li>
-                                                    <li class="active">
+                                                    <li >
                                                         <a href="ui-boxss.html">
                                                             <i class="fa fa-angle-right"></i>boxss</a>
                                                     </li>
@@ -62,77 +63,6 @@
                                                 <a href="charts.html">
                                                     <i class="fa fa-bar-chart-o"></i>
                                                     <span>Charts</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a role="button" tabindex="0">
-                                                    <i class="fa fa-table"></i>
-                                                    <span>Tables</span>
-                                                </a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="tables-bootstrap.html">
-                                                            <i class="fa fa-angle-right"></i> Bootstrap Tables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tables-static.html">
-                                                            <i class="fa fa-angle-right"></i>Static Tables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tables-footable.html">
-                                                            <i class="fa fa-angle-right"></i> FooTable</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a role="button" tabindex="0">
-                                                    <i class="fa fa-map-o"></i>
-                                                    <span>Maps</span>
-                                                </a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="maps-vector.html">
-                                                            <i class="fa fa-angle-right"></i> Vector Maps</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="maps-google.html">
-                                                            <i class="fa fa-angle-right"></i> Google Maps</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a role="button" tabindex="0">
-                                                    <i class="fa fa-lock"></i>
-                                                    <span>Authentication</span>
-                                                </a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="login.html">
-                                                            <i class="fa fa-angle-right"></i> Login Page</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="signup.html">
-                                                            <i class="fa fa-angle-right"></i> Signup Page</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forgotpass.html">
-                                                            <i class="fa fa-angle-right"></i> Forgot Password</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="page-offline.html">
-                                                            <i class="fa fa-angle-right"></i> Page Offline</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="locked.html">
-                                                            <i class="fa fa-angle-right"></i> Locked Screen</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="calendar.html">
-                                                    <i class="fa fa-calendar-check-o"></i>
-                                                    <span>Calendar</span>
-                                                    <span class="label label-primary">new events</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -150,30 +80,36 @@
                                 </div>
                                 <div id="leftmenuControls" class="panel-collapse collapse in" role="tabpanel">
                                     <div class="panel-body">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="col-xs-8">Switch ON</label>
-                                                <div class="col-xs-4 control-label">
-                                                    <div class="togglebutton">
-                                                        <label>
-                                                            <input type="checkbox" checked="">
-                                                        </label>
+                                        <% servicos.forEach(function(serv) { %>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="col-xs-8">
+                                                        <i class="<%=serv.icon%>"></i>&nbsp;
+                                                        <%=serv.nome%>
+                                                    </label>
+                                                    <div class="col-xs-4 control-label">
+                                                        <div class="togglebutton">
+                                                            <label>
+                                                                <input type="checkbox" checked="">
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="col-xs-8">Switch OFF</label>
-                                                <div class="col-xs-4 control-label">
-                                                    <div class="togglebutton">
-                                                        <label>
-                                                            <input type="checkbox">
-                                                        </label>
+                                            <% }); %>
+                                                <!--<div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-xs-8">Switch OFF</label>
+                                                        <div class="col-xs-4 control-label">
+                                                            <div class="togglebutton">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                -->
                                     </div>
                                 </div>
                                 <div class="milestone-sidbar">
@@ -197,290 +133,6 @@
                     </div>
                 </aside>
                 <!--/ SIDEBAR Content -->
-
-                <!--RIGHTBAR Content -->
-                <aside id="rightmenu">
-                    <div role="tabpanel">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#todo" aria-controls="todo" role="tab" data-toggle="tab">Todo</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
-                            </li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="chat">
-                                <div class="search">
-                                    <div class="form-group is-empty">
-                                        <input type="text" class="form-control underline-input" placeholder="Search...">
-                                        <span class="material-input"></span>
-                                    </div>
-                                </div>
-                                <h6>Recent</h6>
-                                <ul>
-                                    <li class="online">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                                <img class="media-object " src="assets/images/xs/avatar1.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <span class="name">Claire Sassu</span>
-                                                <span class="message"> If you are going to use a passage of Lorem Ipsum</span>
-                                                <span class="badge badge-outline status"></span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="online">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                                <img class="media-object " src="assets/images/xs/avatar8.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name">Maggie jackson</span>
-                                                    <span class="message">All the Lorem Ipsum generators on the Internet</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="online">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                                <img class="media-object " src="assets/images/xs/avatar3.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name">Joel King</span>
-                                                    <span class="message">The standard chunk of Lorem Ipsum used</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="online">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                                <img class="media-object " src="assets/images/xs/avatar6.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name">Isabella</span>
-                                                    <span class="message">There are many variations of passages of Lorem</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="online">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                                <img class="media-object " src="assets/images/xs/avatar5.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name">Alexander</span>
-                                                    <span class="message">Contrary to popular belief, Lorem Ipsum</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h6>Contacts</h6>
-                                <ul>
-                                    <li class="offline">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button">
-                                                <img class="media-object " src="assets/images/xs/avatar5.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name mt-5">Matthew</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="offline">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button">
-                                                <img class="media-object " src="assets/images/xs/avatar4.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name mt-5">Aaliyah</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="offline">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button">
-                                                <img class="media-object " src="assets/images/xs/avatar8.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name mt-5">Arianna</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="online">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button">
-                                                <img class="media-object " src="assets/images/xs/avatar9.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name mt-5">Scarlett</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="offline">
-                                        <div class="media">
-                                            <a class="pull-left thumb thumb-sm" role="button">
-                                                <img class="media-object " src="assets/images/xs/avatar10.jpg" alt=""> </a>
-                                            <div class="media-body">
-                                                <div class="media-body">
-                                                    <span class="name mt-5">David</span>
-                                                    <span class="badge badge-outline status"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="todo">
-                                <div class="form-group">
-                                    <input type="text" value="" placeholder="Create new task..." class="form-control" />
-                                    <span class="fa fa-plus"></span>
-                                </div>
-                                <h6>Today</h6>
-                                <ul class="todo-list">
-                                    <li>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsCheckboxes"> Initialize the project</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsCheckboxes"> Create the main structure</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsCheckboxes"> Create the main structure</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h6>Tomorrow</h6>
-                                <ul class="todo-list">
-                                    <li>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsCheckboxes"> Initialize the project</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsCheckboxes"> Create the main structure</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsCheckboxes"> displayed in a normal space!</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="settings">
-                                <h6>Chat Settings</h6>
-                                <ul class="settings">
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="col-xs-8 control-label">Show Offline Users</label>
-                                            <div class="col-xs-4 control-label text-right">
-                                                <div class="togglebutton">
-                                                    <label>
-                                                        <input type="checkbox" checked="">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="col-xs-8 control-label">Show Fullname</label>
-                                            <div class="col-xs-4 control-label text-right">
-                                                <div class="togglebutton">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="col-xs-8 control-label">History Enable</label>
-                                            <div class="col-xs-4 control-label text-right">
-                                                <div class="togglebutton">
-                                                    <label>
-                                                        <input type="checkbox" checked="">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="col-xs-8 control-label">Show Locations</label>
-                                            <div class="col-xs-4 control-label text-right">
-                                                <div class="togglebutton">
-                                                    <label>
-                                                        <input type="checkbox" checked="">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="col-xs-8 control-label">Notifications</label>
-                                            <div class="col-xs-4 control-label text-right">
-                                                <div class="togglebutton">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="col-xs-8 control-label">Show Undread Count</label>
-                                            <div class="col-xs-4 control-label text-right">
-                                                <div class="togglebutton">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-                <!--/ RIGHTBAR Content -->
             </div>
             <!--/ CONTROLS Content -->
 
@@ -491,78 +143,17 @@
                     <div class="b-b mb-10">
                         <div class="row">
                             <div class="col-sm-6 col-xs-12">
-                                <h3 class="h3 m-0">Boxs</h3>
-                                <small class="text-muted">Welcome to Falcon application</small>
+                                <h3 class="h3 m-0"><%=titulo%></h3>
+                                <small class="text-muted"><%=subtitulo%></small>
                             </div>
                         </div>
                     </div>
 
-                    <!-- row -->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <section class="boxs">
-                                <div class="boxs-header">
-                                    <h3 class="custom-font hb-cyan">
-                                        <strong>Simple</strong> boxs</h3>
-                                </div>
-                                <div class="boxs-body">
-                                    <p>This is boxs body area.</p>
-                                </div>
-                                <div class="boxs-footer">
-                                    <p>This is boxs footer area.</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-4">
-                            <section class="boxs">
-                                <div class="boxs-header">
-                                    <h3 class="custom-font text-uppercase hb-blue">
-                                        <strong>Uppercased</strong> Heading Box</h3>
-                                </div>
-                                <div class="boxs-body">
-                                    <p>This is boxs body area.</p>
-                                </div>
-                                <div class="boxs-footer">
-                                    <p>This is boxs footer area.</p>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <section class="boxs">
-                                <div class="boxs-header">
-                                    <h3 class="custom-font">
-                                        <strong>boxs with</strong> datepiker</h3>
-                                    <ul class="controls">
-                                        <li>
-                                            <input class="m_datepicker form-control" type="text" value="03/12/2016" />
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="boxs-body">
-                                    <p>This is boxs body area.</p>
-                                </div>
-                                <div class="boxs-footer">
-                                    <p>This is boxs footer area.</p>
-                                </div>
-                            </section>
-                            <section class="boxs boxs-simple">
-                                <div class="boxs-widget">
-                                    <p>
-                                        <strong>Simple boxs without heading.</strong> This is boxs widget area.</p>
-                                </div>
-                                <div class="boxs-body">
-                                    <p>This is boxs body area.</p>
-                                </div>
-                                <div class="boxs-footer">
-                                    <p>This is boxs footer area.</p>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
+                    
                 </div>
             </section>
     </div>
     <% include ../views/layout/js %>
+
+    
 </body>

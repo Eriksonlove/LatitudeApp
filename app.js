@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
 });
 
 servicos: <%- JSON.stringify(servicos) %>
-
+https://latitudeapp.herokuapp.com/webhooks/whatsapp
 */
 
 app.post('/webHooks/whatsapp', function (req, res) {
@@ -40,15 +40,17 @@ app.post('/webHooks/whatsapp', function (req, res) {
     console.log(req.headers);
     console.log(req.body);
 
+    let post = JSON.parse(req.data);
+
     let agora = moment().format('HH:mm:ss DD/MM/YYYY');
     io.emit('mensagem', {
         dataChegada: agora,
-        origem: req.body.from,
-        texto: req.body.text,
+        origem: post.from,
+        texto: post.text,
         inbound: true
     });
 
-    res.send(`${agora} - ${req.body.from} - ${req.body.text}`);
+    res.send(`${agora} - ${post.from} - ${post.text}`);
 });
 
 io.on('connection', (socket) => {

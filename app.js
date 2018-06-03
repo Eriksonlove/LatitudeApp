@@ -7,6 +7,8 @@ var path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
+var moment = require('moment');
+var request = require('request');
 
 var port = process.env.PORT || 8000;
 
@@ -28,8 +30,73 @@ app.get('/', function (req, res) {
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/pages/login.html'));
 });
+
+servicos: <%- JSON.stringify(servicos) %>
+
 */
 
+app.post('/webHooks/whatsapp', function (req, res) {
+
+    console.log(req.headers);
+    console.log(req.body);
+
+    io.emit('mensagem', {
+        dataChegada: moment().format('HH:mm:ss DD/MM/YYYY'),
+        origem: req.body.from,
+        texto: req.body.text,
+        inbound: true
+    });
+
+    res.status(200).send();
+});
+
+io.on('connection', (socket) => {
+    console.log(`Cliente ${socket.client.id} conectado.`);
+
+    socket.on('enviarMsg', (data) => {
+        var headers = {
+            'User-Agent':       'Super Agent/0.0.1',
+            'Content-Type':     'application/x-www-form-urlencoded'
+        }
+
+        var options = {
+            url: 'http://panel.apiwha.com/send_message.php',
+            method: 'GET',
+            headers: headers,
+            qs: {
+                'apikey': 'WHB921DDXRUE1WQK8MPG',
+                'number': data.contact,
+                'text':data.texto
+            }
+        }
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // Print out the response body
+
+                io.emit('mensagem', {
+                    dataChegada: moment().format('hh:mm:ss dd-MM-YYYY'),
+                    origem: 'Agente',
+                    texto: data.texto,
+                    inbound: false
+                });
+
+                console.log(body)
+            }
+
+            console.log(response);
+        })
+
+        /*io.emit('mensagem', {
+            dataChegada: moment().format('hh:mm:ss dd-MM-YYYY'),
+            origem: 'Agente',
+            texto: data.texto,
+            inbound: false
+        });*/
+
+        console.log(data);
+    });
+});
 
 app.get('/', function (req, res) {
     try {

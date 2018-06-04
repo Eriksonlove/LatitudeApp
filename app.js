@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var request = require('request');
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 80;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -37,20 +37,43 @@ https://latitudeapp.herokuapp.com/webhooks/whatsapp
 
 app.post('/webHooks/whatsapp', function (req, res) {
 
-    console.log(req.headers);
-    console.log(req.body);
-
-    let post = JSON.parse(req.data);
-
+    //console.log(req.headers);
+    //console.log(req.body);
     let agora = moment().format('HH:mm:ss DD/MM/YYYY');
-    io.emit('mensagem', {
+    var text = req.body.data.split('\\');
+
+    console.log(text);
+
+    /*text = text.replace('/\\','');
+        var s = text.replace(/\\n/g, "\\n")
+            .replace(/\\'/g, "\\'")
+            .replace(/\\"/g, '\\"')
+            .replace(/\\&/g, "\\&")
+            .replace(/\\r/g, "\\r")
+            .replace(/\\t/g, "\\t")
+            .replace(/\\b/g, "\\b")
+            .replace(/\\f/g, "\\f");
+        // remove non-printable and other non-valid JSON chars
+        s = s.replace(/[\u0000-\u0019]+/g, "");
+    */
+    /*
+        let bodyPost = JSON.parse(text);
+    
+        console.log(bodyPost);
+    
+        console.log(text);
+    
+        
+    */
+    /*io.emit('mensagem', {
         dataChegada: agora,
         origem: post.from,
         texto: post.text,
         inbound: true
-    });
+    });*/
 
-    res.send(`${agora} - ${post.from} - ${post.text}`);
+    //res.end(`${agora} - ${bodyPost.from} - ${bodyPost.text}`);
+    res.end(`${agora}`);
 });
 
 io.on('connection', (socket) => {
@@ -58,8 +81,8 @@ io.on('connection', (socket) => {
 
     socket.on('enviarMsg', (data) => {
         var headers = {
-            'User-Agent':       'Super Agent/0.0.1',
-            'Content-Type':     'application/x-www-form-urlencoded'
+            'User-Agent': 'Super Agent/0.0.1',
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
 
         var options = {
@@ -69,7 +92,7 @@ io.on('connection', (socket) => {
             qs: {
                 'apikey': 'WHB921DDXRUE1WQK8MPG',
                 'number': data.contact,
-                'text':data.texto
+                'text': data.texto
             }
         }
 
@@ -146,3 +169,69 @@ app.get('/', function (req, res) {
 server.listen(port, () => {
     console.log(`Servidor activo na porta ${port}`);
 });
+
+setInterval(() => {
+    var headers = {
+        'User-Agent': 'Super Agent/0.0.1',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    var options = {
+        url: 'http://panel.apiwha.com/get_messages.php',
+        method: 'GET',
+        headers: headers,
+        qs: {
+            'apikey': 'WHB921DDXRUE1WQK8MPG',
+            //'type': 'IN',
+            'markaspulled': '1',
+            //'getnotpulledonly': '1'
+        }
+    }
+
+    request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            // Print out the response body
+            /*
+                io.emit('mensagem', {
+                    dataChegada: moment().format('hh:mm:ss dd-MM-YYYY'),
+                    origem: 'Agente',
+                    texto: data.texto,
+                    inbound: false
+                });
+            */
+
+            //if()
+
+            var msg = JSON.parse(body);
+
+            //console.log(msg);
+            //console.log(msg.length);
+
+            msg.forEach(function (m) {
+                //console.log(`Resto ${m.id % 3 === 0 ? false : true}`)
+                /**/io.emit('mensagem', {
+                    dataChegada: moment().format('hh:mm:ss dd-MM-YYYY'),
+                    origem: 'Agente',
+                    texto: m.text,
+                    inbound: m.id % 3 === 0 ? false : true
+                });
+            });
+
+            //console.log(body)
+
+
+        }
+
+        //console.log(response);
+    })
+
+    /*io.emit('mensagem', {
+        dataChegada: moment().format('hh:mm:ss dd-MM-YYYY'),
+        origem: 'Agente',
+        texto: data.texto,
+        inbound: false
+    });*/
+
+    //console.log(data);
+    console.log(`${moment().format('HH:mm:ss DD/MM/YYYY')} - Consulta realizada.`)
+}, 5000);
